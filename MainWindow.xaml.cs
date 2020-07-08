@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeBritoCyrilToDoListEvaluationWPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,16 @@ namespace DeBritoCyrilToDoListEvaluationWPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainViewModel)this.DataContext).AddToDoTask();
+        }
+
+        private void Deletebtn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainViewModel)this.DataContext).RemoveToDoTask();
         }
     }
 }

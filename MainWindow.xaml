@@ -7,6 +7,58 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--Titre-->
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="5" Source="/images/validate.png" Height="20" Width="20"></Image>
+                <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="Black">My Todo List</TextBlock>
+            </StackPanel>
+
+            <!--Liste-->
+            <Grid Grid.Row="1">
+                <Border BorderThickness="0,3,0,0" BorderBrush="#FF3C3C3C" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,-1,0,0">
+                            <TextBox Height="30" TextWrapping="Wrap" Width="300" Text="{Binding NewToDoTask.Task}"/>
+                            <!--<Button Content="Button" Width="75" Margin="10"/>-->
+                            <DatePicker Margin="5" SelectedDate="{Binding MinToDoDate.Date}" DisplayDateStart="{Binding MinToDoDate}"></DatePicker>
+                            <Image Margin="5" Source="/images/moreButton.png" Height="30" Width="30"></Image>
+
+
+                        </StackPanel>
+
+                        <Grid Grid.Row="1">
+                            <StackPanel Orientation="Vertical">
+                                <Image Margin="0" Source="/images/hLine.png" Height="20" Width="50"></Image>
+                                <DataGrid ItemsSource="{Binding Source={StaticResource ReservationsViewSource}}" SelectedItem="{Binding SelectedReservation}" IsReadOnly="True"></DataGrid>
+
+                                <!--<Button Grid.Row="1" Name="deletebtn" Click="Deletebtn_Click">Delete</Button><!-->
+                            </StackPanel>
+                        </Grid>
+                        
+                        
+
+                    </Grid>
+                </Border>
+
+            </Grid>
+
+        </Grid>
+
     </Grid>
 </Window>

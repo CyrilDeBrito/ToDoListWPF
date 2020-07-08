@@ -1,34 +1,54 @@
 using GalaSoft.MvvmLight;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace DeBritoCyrilToDoListEvaluationWPF.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        private ToDoTask toDoTask;
+
+        private ToDoTask selectedToDoTask;
+
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            MinToDoDate = DateTime.Now;
+            ToDoListTasks = new ObservableCollection<ToDoTask>();
+            toDoTask = new ToDoTask();
         }
+
+        public ObservableCollection<ToDoTask> ToDoListTasks { get; set; }
+
+        public ToDoTask NewToDoTask
+        {
+            get { return toDoTask; }
+            set
+            {
+                toDoTask = value;
+                //PropertyChanged(this, new PropertyChangedEventArgs("NewReservation"));
+            }
+        }
+
+        public ToDoTask SelectedToDoTask
+        {
+            get { return selectedToDoTask; }
+            set { selectedToDoTask = value; }
+        }
+
+        public DateTime MinToDoDate { get; set; }
+
+        public void AddToDoTask()
+        {
+            this.ToDoListTasks.Add(toDoTask);
+            NewToDoTask = new ToDoTask();
+        }
+
+        public void RemoveToDoTask()
+        {
+            this.ToDoListTasks.Remove(selectedToDoTask);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

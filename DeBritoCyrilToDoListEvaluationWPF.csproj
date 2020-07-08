@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ToDoTask.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -103,6 +104,18 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\validate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\moreButton.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\moreButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\hLine.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
